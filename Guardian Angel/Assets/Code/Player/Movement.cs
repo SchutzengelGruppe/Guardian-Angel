@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour {
 	//For ground-detection
 	private bool grounded = false;
 	public Transform groundCheck;
-	private float groundRadius = 0.2f;
+	private float groundRadius = 0.02f;
 	public LayerMask whatIsGround;
 
 
@@ -65,6 +65,12 @@ public class Movement : MonoBehaviour {
 			Flip ();
 		}
 
+        if (move == -1 || move == 1)
+        {
+            audioCom.PlayOneShot(WalkClip, 1F);
+        }
+
+
 	}
 
 	public void Jump() {
@@ -80,7 +86,7 @@ public class Movement : MonoBehaviour {
 		
 				secondJump = true;
 				rigid.AddForce (new Vector2 (0, jumpForce));
-				audioCom.PlayOneShot (JumpClip, 1F);
+				audioCom.PlayOneShot (JumpClip, 12F);
 			}
 		}
 
